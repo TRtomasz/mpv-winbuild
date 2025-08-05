@@ -74,7 +74,7 @@ jobs:
             const commit = await github.rest.repos.getCommit({
               owner: 'mpv-player',
               repo: 'mpv',
-              ref: `master`
+              ref: 'v0.40.0'
             })
             core.setOutput('sha', String(commit.data.sha))
             
