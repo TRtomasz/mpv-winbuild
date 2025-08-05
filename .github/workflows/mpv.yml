@@ -199,6 +199,12 @@ jobs:
           repository: shinchiro/mpv-winbuild-cmake
           path: mpv-winbuild-cmake
           fetch-depth: 0
+      - name: Force mpv tag
+        run: |
+            # insert a GIT_TAG line so the ExternalProject checks out v0.40.0
+            sed -i "/GIT_REPOSITORY https:\/\/github.com\/mpv-player\/mpv.git/a\    GIT_TAG v0.40.0" \
+            mpv-winbuild-cmake/packages/mpv.cmake
+          
       - name: Prepare
         run: |
           echo "sha=${{ needs.params.outputs.sha }}" >> $GITHUB_ENV
